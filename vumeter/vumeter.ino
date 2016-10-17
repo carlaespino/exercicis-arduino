@@ -3,6 +3,7 @@ int led12 = 12;
 int led11 = 11;
 int led10 = 10;
 int led9 = 9;
+int lastvalue;
 
 void setup() {
   
@@ -22,21 +23,19 @@ int value1 = map(valueldr,0,1023,0,4); //we assign a value from 0 to 4
 int value2 = map(valueldr,0,1023,1,5);  //we assign a v
 
 
- if(valueldr++){             //if the value of the potentiometer increases 
+ if(valueldr>lastvalue){             //if the value of the potentiometer increases 
   for(int i=0; i<value1; i++){  //switch on the led depending on the potentiometer value
     digitalWrite(9+i,HIGH);
   }
   
- }
- 
- if(valueldr--){                //if the value of the potentiometer increases
+ }else{                
   for(int j=0; j<value2; j++){    //switch off the led depending on the potentiometer value
    digitalWrite(12-j,LOW); 
   }
 
  }
 
-
+ lastvalue = valueldr;
 
 }
 
